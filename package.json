@@ -1,0 +1,16 @@
+{
+  "name": "af_watch",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "twit": "latest",
+    "alchemy-api": "^1.0.0",
+    "underscore": "^1.6.0",
+    "yargs": "^1.2.1",
+    "async": "^0.2.10",
+    "mongoose": "^3.8.8"
+  }
+}
