@@ -28,6 +28,10 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+// TODO: Incorporate bot loop
+
+// ROUTES
+
 app.get('/', routes.index);
 
 // API
