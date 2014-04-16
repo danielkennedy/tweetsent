@@ -1,9 +1,9 @@
 {
-  "name": "af_watch",
+  "name": "tweetsent",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node bot.js"
   },
   "dependencies": {
     "twit": "latest",

@@ -32,5 +32,5 @@ loop(function (err, tweets) {
   console.log('Waterfall took', now.diff(start, 'seconds'), 'seconds?');
   console.log('Start again in', interval, 'seconds?');
   start = moment();
-  setInterval(loop, interval);
+  setTimeout(loop, interval);
 });
