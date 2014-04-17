@@ -15,13 +15,27 @@ var now, start, delay;
 now = start = moment();
 
 var loop = function (onComplete) {
+  start = moment();
   async.waterfall([
     bot.getTweets,
     analyzer.analyzeTweets,
     store.storeTweets
-  ], onComplete);
+  ], function (err, tweets) {
+    if (err === null) {
+      console.log('Stored', tweets.length, 'tweets', tweets);
+    }
+    // Start again in (request_interval - elapsed) seconds
+    now = moment();
+    delay = ((config.twitter_request_interval * 60) - now.diff(start, 'seconds'));
+    console.log('Waterfall took', now.diff(start, 'seconds'), 'seconds?');
+    console.log('Start again in', delay, 'seconds?');
+    setTimeout(loop, (delay * 1000));
+  });
 };
 
+loop();
+
+/*
 loop(function (err, tweets) {
   if (err === null) {
     console.log('Stored', tweets.length, 'tweets', tweets);
@@ -32,9 +46,6 @@ loop(function (err, tweets) {
   console.log('Waterfall took', now.diff(start, 'seconds'), 'seconds?');
   console.log('Start again in', delay, 'seconds?');
   start = moment();
-<<<<<<< Updated upstream
-  setTimeout(loop, interval);
-=======
   setTimeout(loop, delay);
->>>>>>> Stashed changes
 });
+*/

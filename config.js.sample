@@ -7,6 +7,6 @@ module.exports = {
   "twitter_author_blacklist" : [], // A list of Twitter handles, without the leading '@'
   "twitter_request_interval" : 1, // In minutes
   "twitter_max_tweets" : 6, // Maximum number of tweets to analyze each interval
-  "mongo_url" : "", // Defaults to localhost
+  "tweetboart_url" : "", // Defaults to localhost
   "alchemy_access_key" : "" // Provided by Alchemy API
 };
