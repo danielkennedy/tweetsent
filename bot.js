@@ -10,7 +10,7 @@ var bot = new Bot(config);
 var analyzer = new Analyzer(config);
 var store = new Store(config);
 
-var now, start, interval;
+var now, start, delay;
 
 now = start = moment();
 
@@ -24,13 +24,17 @@ var loop = function (onComplete) {
 
 loop(function (err, tweets) {
   if (err === null) {
-    console.log('Stored', tweets.length, 'tweets');
+    console.log('Stored', tweets.length, 'tweets', tweets);
   }
   // Start again in (request_interval - elapsed) seconds
   now = moment();
-  interval = ((config.twitter_request_interval * 60) - now.diff(start, 'seconds'));
+  delay = ((config.twitter_request_interval * 60) - now.diff(start, 'seconds'));
   console.log('Waterfall took', now.diff(start, 'seconds'), 'seconds?');
-  console.log('Start again in', interval, 'seconds?');
+  console.log('Start again in', delay, 'seconds?');
   start = moment();
+<<<<<<< Updated upstream
   setTimeout(loop, interval);
+=======
+  setTimeout(loop, delay);
+>>>>>>> Stashed changes
 });
